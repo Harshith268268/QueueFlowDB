@@ -21,3 +21,5 @@ venv/
 # Operating system
 .DS_Store
 Thumbs.db
+# SQL Server temporary files
+.vs/

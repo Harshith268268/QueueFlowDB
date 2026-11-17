@@ -1,0 +1,29 @@
+USE QueueFlowDB;
+GO
+
+-- Verify all six tables
+SELECT TABLE_NAME
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_TYPE = 'BASE TABLE';
+
+-- Verify primary keys and foreign keys
+SELECT
+    TABLE_NAME,
+    CONSTRAINT_NAME,
+    CONSTRAINT_TYPE
+FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+ORDER BY TABLE_NAME;
+
+-- Verify record counts
+SELECT 'Customer' AS TableName, COUNT(*) AS Total FROM Customer
+UNION ALL
+SELECT 'Agent', COUNT(*) FROM Agent
+UNION ALL
+SELECT 'Skill', COUNT(*) FROM Skill
+UNION ALL
+SELECT 'AgentSkill', COUNT(*) FROM AgentSkill
+UNION ALL
+SELECT 'Request', COUNT(*) FROM Request
+UNION ALL
+SELECT 'RoutingDecision', COUNT(*) FROM RoutingDecision;
+GO
